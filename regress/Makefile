@@ -15,7 +15,7 @@ prep:
 
 clean:
 	for F in $(CLEANFILES); do rm -f $(OBJ)$$F; done
-	rm -rf $(OBJ).putty
+	rm -rf $(OBJ).putty $(OBJ)*.dSYM
 
 distclean:	clean
 
@@ -116,11 +116,11 @@ CLEANFILES=	*.core actual agent-key.* authorized_keys_${USERNAME} \
 		authorized_keys_${USERNAME}.* \
 		authorized_principals_${USERNAME} \
 		banner.in banner.out cert_host_key* cert_user_key* \
-		copy.1 copy.2 data ed25519-agent ed25519-agent* \
+		copy.1 copy.2 data ecdsa-sha2-nistp* ed25519-agent ed25519-agent* \
 		ed25519-agent.pub ed25519 ed25519.pub empty.in \
 		expect failed-regress.log failed-ssh.log failed-sshd.log \
 		hkr.* host.ecdsa-sha2-nistp256 host.ecdsa-sha2-nistp384 \
-		host.ecdsa-sha2-nistp521 host.ssh-dss host.ssh-ed25519 \
+		host.ecdsa-sha2-nistp521 host.sk* host.ssh-dss host.ssh-ed25519 \
 		host.ssh-rsa host_ca_key* host_krl_* host_revoked_* key.* \
 		key.dsa-* key.ecdsa-* key.ed25519-512 \
 		key.ed25519-512.pub key.rsa-* keys-command-args kh.* askpass \
@@ -130,11 +130,13 @@ CLEANFILES=	*.core actual agent-key.* authorized_keys_${USERNAME} \
 		revoked-* rsa rsa-agent rsa-agent.pub rsa.pub rsa_ssh2_cr.prv \
 		rsa_ssh2_crnl.prv scp-ssh-wrapper.exe \
 		scp-ssh-wrapper.scp setuid-allowed sftp-server.log \
-		sftp-server.sh sftp.log ssh-log-wrapper.sh ssh.log \
+		sftp-server.sh sftp.log sk-*@openssh.com sk-*@openssh.com.pub \
+		ssh-log-wrapper.sh ssh.log ssh-dss ssh-dss.pub \
+		ssh-ed25519 ssh-ed25519.pub ssh-rsa ssh-rsa.pub \
 		ssh-agent.log ssh-add.log slow-sftp-server.sh \
 		ssh-rsa_oldfmt knownhosts_command \
 		ssh_config ssh_config.* ssh_proxy ssh_proxy_bak \
-		ssh_proxy_* sshd.log sshd_config sshd_config.* \
+		ssh_proxy_* sshd.log sshd-log-wrapper.sh sshd_config sshd_config.* \
 		sshd_config.* sshd_proxy sshd_proxy.* sshd_proxy_bak \
 		sshd_proxy_orig t10.out t10.out.pub t12.out t12.out.pub \
 		t2.out t3.out t6.out1 t6.out2 t7.out t7.out.pub \
